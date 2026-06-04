@@ -1,0 +1,217 @@
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #f7f9fc;
+  margin: 0;
+  padding: 20px;
+  color: #333;
+}
+.container {
+  max-width: 1000px;
+  margin: 0 auto;
+}
+h1 {
+  text-align: center;
+  color: #2c3e50;
+  margin-bottom: 30px;
+}
+.search-bar {
+  display: flex;
+  gap: 15px;
+  margin-bottom: 25px;
+}
+.search-bar input {
+  flex: 1;
+  padding: 12px;
+  border: 1px solid #cbd5e1;
+  border-radius: 6px;
+  font-size: 16px;
+}
+.search-bar select {
+  padding: 12px;
+  border: 1px solid #cbd5e1;
+  border-radius: 6px;
+  font-size: 16px;
+  background-color: white;
+  cursor: pointer;
+}
+.main-content {
+  display: flex;
+  gap: 30px;
+}
+.contacts-list {
+  flex: 1.5;
+  background: white;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+}
+.contact-form {
+  flex: 1;
+  background: white;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+  height: fit-content;
+}
+h2 {
+  margin-top: 0;
+  color: #34495e;
+  border-bottom: 2px solid #edf2f7;
+  padding-bottom: 10px;
+}
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+form input, form select {
+  padding: 10px;
+  border: 1px solid #cbd5e1;
+  border-radius: 4px;
+  font-size: 14px;
+}
+form button {
+  background-color: #3498db;
+  color: white;
+  border: none;
+  padding: 12px;
+  border-radius: 4px;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+form button:hover {
+  background-color: #2980b9;
+}
+ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.contact-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 10px;
+  border-bottom: 1px solid #edf2f7;
+}
+.contact-info {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+.contact-phone {
+  color: #7f8c8d;
+  font-size: 14px;
+}
+.contact-email {
+  color: #95a5a6;
+}
+.badge {
+  padding: 4px 10px;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: bold;
+  text-transform: uppercase;
+}
+.badge.amis { background-color: #e8f8f5; color: #1e8449; }
+.badge.famille { background-color: #fef9e7; color: #b7950b; }
+.badge.travail { background-color: #f4f6f7; color: #626567; }
+/* --- CONFIGURATION DU DARK MODE --- */
+
+/* Fond global et texte de l'application en mode nuit */
+.app-wrapper.dark-mode {
+  background-color: #1a1a1a;
+  color: #f5f6fa;
+  min-height: 100vh;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* Modification des cartes de contacts en mode nuit */
+.app-wrapper.dark-mode .contact-item {
+  background-color: #2d2d2d;
+  border-color: #444;
+  color: #ffffff;
+}
+
+/* Modification des inputs et select en mode nuit */
+.app-wrapper.dark-mode input,
+.app-wrapper.dark-mode select {
+  background-color: #333333;
+  color: #ffffff;
+  border: 1px solid #555555;
+}
+
+.app-wrapper.dark-mode input::placeholder {
+  color: #aaaaaa;
+}
+
+/* Modification du formulaire en mode nuit */
+.app-wrapper.dark-mode .contact-form {
+  background-color: #252525;
+  border: 1px solid #333;
+}
+
+/* Titres en mode nuit */
+.app-wrapper.dark-mode h1,
+.app-wrapper.dark-mode h2 {
+  color: #ffffff;
+}
+
+/* --- CONFIGURATION RESPONSIVE (MOBILE & TABLETTE) --- */
+
+/* Ajustement du conteneur principal */
+.container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 15px;
+  box-sizing: border-box;
+}
+
+/* Dès que l'écran est plus petit que 768px (Smartphones et Tablettes verticales) */
+@media (max-width: 768px) {
+  
+  /* On force le contenu principal à se mettre en colonne (vertical) au lieu d'une ligne (horizontal) */
+  .main-content {
+    display: flex;
+    flex-direction: column-reverse; /* Met le formulaire AU-DESSUS de la liste sur téléphone pour ajouter plus vite */
+    gap: 20px;
+  }
+
+  /* Le formulaire et la liste prennent maintenant toute la largeur de l'écran */
+  .contacts-list, 
+  .contact-form {
+    width: 100% !important;
+    max-width: 100%;
+    box-sizing: border-box;
+  }
+
+  /* Ajustement de la barre de recherche et du filtre */
+  .search-bar {
+    display: flex;
+    flex-direction: column; /* Aligne la recherche et le select l'un sous l'autre */
+    gap: 10px;
+  }
+
+  .search-bar input,
+  .search-bar select {
+    width: 100%;
+    font-size: 16px; /* Évite que l'iPhone ou Android zooment automatiquement sur l'input */
+  }
+
+  /* Rendre les éléments de la liste de contacts plus compacts */
+  .contact-item {
+    flex-direction: column; /* Le bouton supprimer va se mettre en dessous des infos sur tout petit écran */
+    align-items: flex-start !important;
+    gap: 12px;
+    padding: 15px;
+  }
+
+  .contact-item button {
+    width: 100%; /* Le bouton Supprimer prend toute la largeur sur mobile pour cliquer plus facilement avec le pouce */
+    text-align: center;
+    padding: 10px;
+  }
+}
