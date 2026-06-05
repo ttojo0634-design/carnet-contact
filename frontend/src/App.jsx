@@ -18,7 +18,7 @@ function App() {
   const fetchContacts = async () => {
     try {
       // On encode proprement les paramètres pour éviter les problèmes d'espaces dans la recherche
-      const url = `http://localhost:5000/api/contacts?search=${encodeURIComponent(search)}&type=${encodeURIComponent(type)}`;
+      const url = `https://carnet-contact.onrender.com?search=${encodeURIComponent(search)}&type=${encodeURIComponent(type)}`;
       const response = await fetch(url);
       const data = await response.json();
       
@@ -56,7 +56,7 @@ function App() {
     };
 
     try {
-      const response = await fetch('http://localhost:5000/api/contacts', {
+      const response = await fetch('https://carnet-contact.onrender.com', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(nouveauContactForm),
@@ -106,7 +106,7 @@ function App() {
     }
 
     try {
-      const response = await fetch(`http://localhost:5000/api/contacts/${id}`, {
+      const response = await fetch(`https://carnet-contact.onrender.com/${id}`, {
         method: 'DELETE',
       });
 
